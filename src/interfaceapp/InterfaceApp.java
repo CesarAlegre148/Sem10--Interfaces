@@ -5,6 +5,8 @@
  */
 package interfaceapp;
 
+import pantallas.ListaDeNavegadores;
+
 /**
  *
  * @author Estudiante
@@ -16,7 +18,12 @@ public class InterfaceApp {
      */
     public static void main(String[] args) {
       
-        ListaDeNavegadores Lista = new Lista
+        ListaDeNavegadores lista = new ListaDeNavegadores();
+        lista.setLocationRelativeTo(null);
+        lista.setVisible(true);
+                
+                
+                
     }
     
 }

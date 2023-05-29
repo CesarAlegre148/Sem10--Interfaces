@@ -9,7 +9,23 @@ package entidades;
  *
  * @author Estudiante
  */
-public class SmartTV {
+public class SmartTV 
+        extends Dispositivo
+        implements Navegador, Reproductor {
+
+    /**
+     * @return the tipoEntrada
+     */
+    public int getTipoEntrada() {
+        return tipoEntrada;
+    }
+
+    /**
+     * @param tipoEntrada the tipoEntrada to set
+     */
+    public void setTipoEntrada(int tipoEntrada) {
+        this.tipoEntrada = tipoEntrada;
+    }
     
     
     private int tipoEntrada;
@@ -22,5 +38,30 @@ public class SmartTV {
     private final int SVideo= 6;
     private final int Coaxial= 7
             ;
+
+    @Override
+    public void navegar() {
+        
+    }
+
+    @Override
+    public void abrirlink() {
+        
+    }
+
+    @Override
+    public void reproducir() {
+        
+    }
+
+    @Override
+    public void adelantar() {
+        
+    }
+
+    @Override
+    public void retroceder() {
+        
+    }
             
 }

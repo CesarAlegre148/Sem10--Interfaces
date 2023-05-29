@@ -9,6 +9,10 @@ package entidades;
  *
  * @author Estudiante
  */
-public class Reproductor {
+public interface Reproductor {
+    
+    public void reproducir();
+    public void adelantar();
+    public void retroceder();
     
 }

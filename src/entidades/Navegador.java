@@ -9,9 +9,11 @@ package entidades;
  *
  * @author Estudiante
  */
-public class Navegador {
+public interface Navegador {
     
     public void navegar();
     public void abrirlink();
+    public String getNombre();
+    
     
 }

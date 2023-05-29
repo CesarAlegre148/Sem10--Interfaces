@@ -9,6 +9,13 @@ package entidades;
  *
  * @author Estudiante
  */
-public class Camara {
+public interface Camara {
     
+    
+    public void guardarFoto();
+    public void grabarVideo();
+    public void getApertura();    
+    
+    
+
 }
