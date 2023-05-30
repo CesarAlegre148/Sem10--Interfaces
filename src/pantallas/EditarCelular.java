@@ -99,6 +99,7 @@ public class EditarCelular extends javax.swing.JFrame {
             celular = new Celular();
             celular.setMarca(txtMarca.getText());
             celular.setModelo(txtModelo.getText());
+            //celular.setNombre(txtMarca.getText() + " l " + txtModelo.getText());
             this.padre.setCelular(celular);
             this.padre.setVisible(true);
             this.dispose();

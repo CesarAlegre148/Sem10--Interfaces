@@ -42,8 +42,8 @@ public class ListaDeNavegadores extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         lstNavegadores = new javax.swing.JList<>();
-        jButton1 = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
+        btnBuscar = new javax.swing.JButton();
+        txtBuscar = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -56,7 +56,18 @@ public class ListaDeNavegadores extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(lstNavegadores);
 
-        jButton1.setText("Buscar");
+        btnBuscar.setText("Buscar");
+        btnBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBuscarActionPerformed(evt);
+            }
+        });
+
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
 
         jButton2.setText("Agregar Celular");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -77,7 +88,7 @@ public class ListaDeNavegadores extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(31, 31, 31)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton3)
@@ -85,26 +96,26 @@ public class ListaDeNavegadores extends javax.swing.JFrame {
                         .addComponent(jButton2))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(layout.createSequentialGroup()
-                            .addComponent(jTextField1)
+                            .addComponent(txtBuscar)
                             .addGap(18, 18, 18)
-                            .addComponent(jButton1))
+                            .addComponent(btnBuscar))
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 328, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(41, Short.MAX_VALUE))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnBuscar)
+                    .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton3))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -131,8 +142,28 @@ public class ListaDeNavegadores extends javax.swing.JFrame {
 // TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void btnBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscarActionPerformed
+
+        buscar();
+      
+    }//GEN-LAST:event_btnBuscarActionPerformed
+
+    protected void buscar() {
+        modeloLista.removeAllElements();
+        for(Navegador nav : navegadores){
+            if(nav.getNombre().toLowerCase()
+                    .contains(txtBuscar.getText().toLowerCase())){
+                modeloLista.addElement(nav.getNombre());
+            }
+        }
+    }
+
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        buscar();
+    }//GEN-LAST:event_txtBuscarKeyReleased
+
     void actualizarLista(){
-        lstNavegadores.removeAll();
+        modeloLista.removeAllElements();
         for(Navegador nav : navegadores){
             modeloLista.addElement(nav.getNombre());
         }
@@ -142,10 +173,12 @@ public class ListaDeNavegadores extends javax.swing.JFrame {
      void setCelular(Celular celular) {
        celulares.add(celular);
        navegadores.add(celular);
+       actualizarLista();
     }
      void setSmartTv(SmartTV televisor){
          televisores.add(televisor);
          navegadores.add(televisor);
+         actualizarLista();
      }
     
     public static void main(String args[]) {
@@ -181,12 +214,12 @@ public class ListaDeNavegadores extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnBuscar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JList<String> lstNavegadores;
+    private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 
    

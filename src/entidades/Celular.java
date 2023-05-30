@@ -19,6 +19,12 @@ public class Celular
     private String marca;
     private String modelo;
 
+    
+    @Override
+    public String getNombre(){
+        return marca + " l " + modelo;
+    }
+    
     @Override
     public void guardarFoto() {
         
